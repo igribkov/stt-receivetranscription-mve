@@ -164,6 +164,8 @@ func handleStreamingTranscription(ctx context.Context, config *Config, audioData
 			}
 			time.Sleep(200 * time.Millisecond)
 		}
+
+		errChan <- client.stream.CloseSend()
 	}()
 
 	// Receive transcriptions in goroutine
